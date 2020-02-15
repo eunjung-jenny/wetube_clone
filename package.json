@@ -1,0 +1,11 @@
+{
+  "name": "wetube_clone",
+  "version": "1.0.0",
+  "description": "Cloning Youtube with VanillaJS, NodeJS and MongoDB following lectures on Nomad Academy",
+  "main": "index.js",
+  "author": "Eunjung Jenny Jeon",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
