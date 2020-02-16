@@ -43,6 +43,8 @@ brew install node # installer 없이 설치
 node # nodeJS 실행
 node -v # nodeJS 버전 체크
 brew update node # 업데이트
+
+node [파일명] # node로 실행
 ```
 
 - `brew install node` installer 없이 설치
@@ -60,8 +62,16 @@ npm init # npm 을 package manager 로 사용하는 프로젝트를 시작 => pa
 npm install express # express 는 해당 프로젝트 폴더 내, package.json 파일 생성 후에 설치해야 함 => 함께 다운로드된 외부 패키지들의 폴더인  node_modules 생성, package-lock.json 파일 생성, package.json 파일 내에 "dependencies" 항목 추가
 ```
 
-    - **package.json 파일의 유용성**: 협업을 위해 프로젝트를 공유할 때에 index.js, package.json 파일만 전해주고 npm install 명령어를 실행하면 dependencies 항목에 따라 필요한 패키지가 모두 설치됨
+- **package.json 파일의 유용성**: 협업을 위해 프로젝트를 공유할 때에 index.js, package.json 파일만 전해주고 npm install 명령어를 실행하면 dependencies 항목에 따라 필요한 패키지가 모두 설치됨
 
-    - **.gitignore**: git 이 관리하지 않게끔 할 파일/폴더를 설정
-        -[nodeJS에서의 표준](https://github.com/github/gitignore/blob/master/Node.gitignore)
-        - package-lock.json: 패키지 보안과 관련되어 있으므로 .gitignore에 포함시킴
+- **.gitignore**: git 이 관리하지 않게끔 할 파일/폴더를 설정 -[nodeJS에서의 표준](https://github.com/github/gitignore/blob/master/Node.gitignore)
+  - package-lock.json: 패키지 보안과 관련되어 있으므로 .gitignore에 포함시킴
+
+### 3) express 서버 만들기
+
+```javascript
+const express = require("express"); // require: 해당 폴더명을 갖는 모듈을 찾아서 가져옴
+const app = express(); // 가져온 express 모듈을 실행
+
+app.listen(4000); // 4000번 포트의 요청을 받도록 함
+```
