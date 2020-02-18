@@ -34,6 +34,12 @@
 - [**express.js**](https://github.com/expressjs/express): nodeJS 웹서버 구축을 위한 대표적인 프레임워크
   > The Express philosophy is to provide small, robust tooling for HTTP servers, making it a great solution for single page applications, web sites, hybrids, or public HTTP APIs.
 
+### 5) GET & POST
+
+- 일반적으로 주소창에 url 입력시 브라우저는 GET 메서드를 통해 웹페이지를 읽어오게 됨
+  - 그에 대한 응답을 해줘야 하며 이를 설정하지 않으면 무한 로딩에 빠짐
+- 그리고 POST 메서드를 통해 정보를 웹사이트에 전달하게 됨 (ex. 로그인, 댓글 입력)
+
 ## 2. 클론
 
 ### 1) nodeJS 설치
@@ -75,3 +81,16 @@ const app = express(); // 가져온 express 모듈을 실행
 
 app.listen(4000); // 4000번 포트의 요청을 받도록 함
 ```
+
+### 4) Route 와 response 설정
+
+```javascript
+function handleHome(req, res) {
+  console.log(req);
+  res.send("Hello from home!");
+}
+
+app.get("/", handleHome); // main URL
+```
+
+- `res.send("text")` : text 부분에 완성된 html, css 를 보내주어야 함
