@@ -120,4 +120,4 @@ npm install nodemon -D # -D 를 통해 dependency에 포함되는 것을 막을 
 ```
 
 - 코드 변경 사항이 있을 때마다 자동으로 서버를 재시작
-- package.json 파일의 `"start": "babel-node index.js"`를 `"start": "nodemon --exec babel-node index.js"` 로 변경하여 babel 이 파일을 실행하게끔 변경
+- package.json 파일의 `"start": "babel-node index.js"`를 `"start": "nodemon --exec babel-node index.js"` 로 변경하여 babel 이 파일을 실행하게끔 변경 -`"start": "nodemon --exec babel-node index.js --delay 2"` : 코드 변경(저장) 후 2초를 기다린 후에 서버를 재시작, babel 이 코드를 변환할 때까지 기다려줌으로써 코드 변경시마다 서버가 2번씩 재시작되는 것을 방지함
