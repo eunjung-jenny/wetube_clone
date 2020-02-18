@@ -94,3 +94,17 @@ app.get("/", handleHome); // main URL
 ```
 
 - `res.send("text")` : text 부분에 완성된 html, css 를 보내주어야 함
+
+### 5) BabelNode 설치
+
+```bash
+npm install @babel/node
+npm install @babel/core
+npm install @babel/preset-env # 안정적인 수준에서 가장 최신의 문법까지 허용
+```
+
+- [babel](https://babeljs.io/) 은 최신 JS 문법을 이전의 버전으로 변환해줌
+
+- `.babelrc` 파일을 생성하여 nodeJS와 관련된 설정을 모두 명시해두면, 웹/앱을 실행할 때 시스템은 이 파일을 먼저 살펴본 뒤 설정에 맞게 실행시킴
+
+- package.json 파일의 `"start": "node index.js"` 를 `"start": "babel-node index.js"` 로 변경하여 babel 이 파일을 실행하게끔 변경
