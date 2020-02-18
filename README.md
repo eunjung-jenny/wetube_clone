@@ -40,6 +40,10 @@
   - 그에 대한 응답을 해줘야 하며 이를 설정하지 않으면 무한 로딩에 빠짐
 - 그리고 POST 메서드를 통해 정보를 웹사이트에 전달하게 됨 (ex. 로그인, 댓글 입력)
 
+### 6) Dependency
+
+- 프로젝트가 실행되기 위해 필요한 것들을 표시함
+
 ## 2. 클론
 
 ### 1) nodeJS 설치
@@ -108,3 +112,12 @@ npm install @babel/preset-env # 안정적인 수준에서 가장 최신의 문�
 - `.babelrc` 파일을 생성하여 nodeJS와 관련된 설정을 모두 명시해두면, 웹/앱을 실행할 때 시스템은 이 파일을 먼저 살펴본 뒤 설정에 맞게 실행시킴
 
 - package.json 파일의 `"start": "node index.js"` 를 `"start": "babel-node index.js"` 로 변경하여 babel 이 파일을 실행하게끔 변경
+
+### 6) Nodemon 설치
+
+```bash
+npm install nodemon -D # -D 를 통해 dependency에 포함되는 것을 막을 수 있으며, 이는 devDependency에 포함됨
+```
+
+- 코드 변경 사항이 있을 때마다 자동으로 서버를 재시작
+- package.json 파일의 `"start": "babel-node index.js"`를 `"start": "nodemon --exec babel-node index.js"` 로 변경하여 babel 이 파일을 실행하게끔 변경
