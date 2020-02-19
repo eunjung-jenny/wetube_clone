@@ -51,7 +51,8 @@
 - 이 때 middleware는 next 를 통해 해당 middleware 가 실행된 이후 다음 middleware 또는 response 가 진행될 수 있는 권한을 넘겨주게 됨
   - express 에서 connection 과 관련된 모든 요소들은 request, response, next 를 매개변수로 갖고 있음
 - middleware의 개수는 제한이 없음
-- middleware를 통해 유저의 로그인 여부 확인, 로그 작성 등과 관련된 작업 등을 수행할 수 있음
+- middleware를 통해 유저의 로그인 여부 확인, 로그 작성, ip 주소 확인 등과 관련된 작업 등을 수행할 수 있음
+- connection 이 발생할 때, index.js 파일을 상단에서부터 실행하므로 middleware 코드 위치에 따라 진행되는 작업을 다르게 설정할 수 있음
 
 ```javascript
 ```

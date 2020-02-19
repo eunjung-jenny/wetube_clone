@@ -26,7 +26,9 @@ const betweenHome = (req, res, next) => {
   next();
 };
 
-app.get("/", betweenHome, handleHome); // main URL
+app.use(betweenHome);
+
+app.get("/", handleHome); // main URL
 
 app.get("/profile", handleProfile);
 
