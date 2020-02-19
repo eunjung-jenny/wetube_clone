@@ -4,6 +4,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
+import { userRouter } from "./router";
 
 const app = express();
 
@@ -24,6 +25,9 @@ app.use(morgan("dev"));
 app.get("/", handleHome); // main URL
 
 app.get("/profile", handleProfile);
+
+// /user route 접속시 userRouter 전체를 사용함
+app.use("/user", userRouter);
 
 // app 객체를 내보내기
 export default app;

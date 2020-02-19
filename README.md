@@ -62,6 +62,11 @@
     - 옵션에 따라 받아서 parsing 할 수 있는 형식이 달라짐
   - `npm install cookie-parser` : session을 다룰 수 있도록 함 (to be continued..)
 
+### 8) router & route
+
+- router는 route들을 범주화하여 복잡성을 쪼개줌
+- router 내 route 개수에는 제한이 없음
+
 ## 2. 클론
 
 ### 1) nodeJS 설치
