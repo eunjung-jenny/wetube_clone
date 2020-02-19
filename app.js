@@ -7,17 +7,6 @@ import bodyParser from "body-parser";
 
 const app = express();
 
-const PORT = 4000;
-
-const handleListening = () => {
-  console.log(`Listening on: http://localhost:${PORT}`);
-};
-
-// 위 코드의 구버전 // babel을 사용하기 때문에 위 코드가 가능
-// function handleListening() {
-//   console.log(`Listening on: http://localhost:${PORT}`);
-// }
-
 const handleHome = (req, res) => {
   res.send("Hello from home!");
 };
@@ -36,4 +25,5 @@ app.get("/", handleHome); // main URL
 
 app.get("/profile", handleProfile);
 
-app.listen(PORT, handleListening);
+// app 객체를 내보내기
+export default app;
