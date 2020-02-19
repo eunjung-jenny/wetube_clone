@@ -44,6 +44,18 @@
 
 - 프로젝트가 실행되기 위해 필요한 것들을 표시함
 
+### 7) Middleware (in express)
+
+- 유저가 웹사이트에 접근하고자하는 request를 보내면, index.js 파일이 실행되고, 요청받은 route의 존재 여부를 확인하여 response를 보내게 됨
+- 유저와 마지막 response 사이에 존재하는 함수들을 middleware라고 함
+- 이 때 middleware는 next 를 통해 해당 middleware 가 실행된 이후 다음 middleware 또는 response 가 진행될 수 있는 권한을 넘겨주게 됨
+  - express 에서 connection 과 관련된 모든 요소들은 request, response, next 를 매개변수로 갖고 있음
+- middleware의 개수는 제한이 없음
+- middleware를 통해 유저의 로그인 여부 확인, 로그 작성 등과 관련된 작업 등을 수행할 수 있음
+
+```javascript
+```
+
 ## 2. 클론
 
 ### 1) nodeJS 설치

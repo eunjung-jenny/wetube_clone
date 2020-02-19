@@ -14,7 +14,6 @@ const handleListening = () => {
 // }
 
 const handleHome = (req, res) => {
-  console.log(req);
   res.send("Hello from home!");
 };
 
@@ -22,7 +21,12 @@ const handleProfile = (req, res) => {
   res.send("You are on my profile");
 };
 
-app.get("/", handleHome); // main URL
+const betweenHome = (req, res, next) => {
+  console.log("I'm a middleware");
+  next();
+};
+
+app.get("/", betweenHome, handleHome); // main URL
 
 app.get("/profile", handleProfile);
 
