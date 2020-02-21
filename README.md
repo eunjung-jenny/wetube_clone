@@ -67,6 +67,18 @@
 - router는 route들을 범주화하여 복잡성을 쪼개줌
 - router 내 route 개수에는 제한이 없음
 
+### 9) MVC 패턴
+
+- Model : data
+- View : how do the data look
+- Control : function thatn looks for the data
+
+  - Controller : 일반적으로 하나의 데이터셋마다 하나의 컨트롤러를 설정
+    - 현 시점에서는 video, user에 대해 컨트롤러를 하나씩 만들 예정
+    - 라우터에 annonymous 함수로 작성한 부분을 컨트롤러로 작성하면 됨
+
+- M, V, C 에 해당하는 파트들을 서로 분리하여 작성하고 관리
+
 ## 2. 클론
 
 ### 1) nodeJS 설치
