@@ -194,4 +194,4 @@ app.set("views", [기본 폴더 경로]); # 디폴트 값은 "/views"  => views 
 
 ##### Pug with JS
 
-- `#{[JS code]}`
+- Pug 파일 내에 `#{[JS code]}` 를 통해 JS 활용
