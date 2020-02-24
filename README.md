@@ -156,3 +156,31 @@ npm install nodemon -D # -D 를 통해 dependency에 포함되는 것을 막을 
 
 - 코드 변경 사항이 있을 때마다 자동으로 서버를 재시작
 - package.json 파일의 `"start": "babel-node index.js"`를 `"start": "nodemon --exec babel-node index.js"` 로 변경하여 babel 이 파일을 실행하게끔 변경 -`"start": "nodemon --exec babel-node index.js --delay 2"` : 코드 변경(저장) 후 2초를 기다린 후에 서버를 재시작, babel 이 코드를 변환할 때까지 기다려줌으로써 코드 변경시마다 서버가 2번씩 재시작되는 것을 방지함
+
+### 7) Pug
+
+#### (1) 설치
+
+- express 의 view engine, 템플릿 언어
+- 템플릿을 활용하여 모든 페이지에 동일하게 적용될 html, css 와 관련된 반복적인 작업을 줄여줌
+
+```bash
+npm install pug
+```
+
+- express [`app.set(name, value`](https://expressjs.com/ko/api.html)
+  - express app 의 설정 변경
+
+```python
+app.set("view engine", "pug"); # view engine 을 pug 로 변경 # html 파일의 디폴트 폴더
+app.set("views", [기본 폴더 경로]); # 디폴트 값은 "/views"  => views 폴더 생성 & 파일 확장자는 .pug
+```
+
+#### (2) 사용법
+
+- 컨트롤러에서 `res.send` 대신 `res.render([pug 파일명])` 작성 : app.set 의 views 에 설정된 기본 폴더 내에서 해당 파일을 탐색하여 렌더링 하게 됨
+- layouts (폴더명은 원하는 대로 가능) 폴더 내에 모든 페이지에 공통되는 html 코드를 템플릿화
+  - 각 페이지별 내용이 들어갈 자리는 `block content` (content 는 이름을 명명한 것으로 원하는 것으로 변경가능) 로 표시
+- 각 페이지별 pug 파일에서 `extends [템플릿 파일 경로]`로 템플릿 활용 의사를 밝히고, `block content` 내부에 원하는 내용을 작성
+- html 의 `<p class=">hello</p>` 은 pug 에서 `p hello` 와 동일
+- 태그간 자손 관계는 tab 으로 표현
