@@ -178,9 +178,20 @@ app.set("views", [기본 폴더 경로]); # 디폴트 값은 "/views"  => views 
 
 #### (2) 사용법
 
+##### basic grammar & template
+
 - 컨트롤러에서 `res.send` 대신 `res.render([pug 파일명])` 작성 : app.set 의 views 에 설정된 기본 폴더 내에서 해당 파일을 탐색하여 렌더링 하게 됨
 - layouts (폴더명은 원하는 대로 가능) 폴더 내에 모든 페이지에 공통되는 html 코드를 템플릿화
   - 각 페이지별 내용이 들어갈 자리는 `block content` (content 는 이름을 명명한 것으로 원하는 것으로 변경가능) 로 표시
 - 각 페이지별 pug 파일에서 `extends [템플릿 파일 경로]`로 템플릿 활용 의사를 밝히고, `block content` 내부에 원하는 내용을 작성
 - html 의 `<p class=">hello</p>` 은 pug 에서 `p hello` 와 동일
 - 태그간 자손 관계는 tab 으로 표현
+
+##### partials
+
+- 템플릿을 보다 조직적이고 구조적으로 만들기 위한 방식
+- `include [파일 경로]`를 통해 여러 pug 템플릿을 취합
+
+##### Pug with JS
+
+- `#{[JS code]}`
