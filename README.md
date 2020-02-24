@@ -168,7 +168,7 @@ npm install nodemon -D # -D 를 통해 dependency에 포함되는 것을 막을 
 npm install pug
 ```
 
-- express [`app.set(name, value`](https://expressjs.com/ko/api.html)
+- express [`app.set(name, value`](https://expressjs.com/ko/api.html#app.set)
   - express app 의 설정 변경
 
 ```python
@@ -195,3 +195,16 @@ app.set("views", [기본 폴더 경로]); # 디폴트 값은 "/views"  => views 
 ##### Pug with JS
 
 - Pug 파일 내에 `#{[JS code]}` 를 통해 JS 활용
+
+##### template with information from controller
+
+- 템플릿 정보 입력
+
+  - local variable 을 global variable 처럼 사용 가능하게끔 하는 middleware 활용
+  - 해당 함수가 실행되는 위치에 유의
+  - [`res.locals`](https://expressjs.com/ko/api.html#res.locals) : local variable 로 respond
+
+- 각 페이지별 정보 입력
+
+  - cotroller 파일에서 `res.render` 의 두번째 인자로 템플릿에서 사용될 정보들을 딕셔너리 형태로 입력
+  - 컨트롤러 (`res.render([pug파일], [정보])`)에서 정보가 pug 파일로 전달 => pug 파일은 템플릿에서 extend => 템플릿에 정보가 전달

@@ -8,15 +8,18 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
+import { localsMiddleware } from "./middlewares";
 
 const app = express();
 
-app.set("view engine", "pug");
 app.use(helmet());
+app.set("view engine", "pug");
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+
+app.use(localsMiddleware); // local 변수를 global 변수로 사용 가능하게끔 하는 역할
 
 // /user route 접속시 userRouter 전체를 사용함
 app.use(routes.home, globalRouter);
