@@ -236,6 +236,13 @@ app.set("views", [기본 폴더 경로]); # 디폴트 값은 "/views"  => views 
 - label
   - input 선택영역의 확장
 
+### 9) DB
+
+#### (1) Fake DB (db.js)
+
+- each elem in elems (in html)
+  - 순회
+
 ### Pages I need
 
 - [] Home
