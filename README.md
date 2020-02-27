@@ -214,15 +214,30 @@ app.set("views", [기본 폴더 경로]); # 디폴트 값은 "/views"  => views 
   - 입력 받기
 
     ```html
-    <form action=[경로] method=[get/post]>
-    <input
-      type="[유형]"
-      name="[query로_전해질_때의_이름]"
-    />
-    <!-- url: `baseURL/경로?name=인풋값` -->
-    ``
+    <form action="[경로]" method="[get]">
+      <!-- query에 접근하기 위해서는 get 방식이어야 함-->
+      <input
+        type="[유형]"
+        name="[query로_전해질_때의_이름]"
+      />
+      <!-- url: `baseURL/경로?name=인풋값` -->
+      ``
+    </form>
     ```
 
   - 입력값 사용
 
     - 입력값은 `res.query` 에 저장됨
+
+### Pages I need
+
+- [] Home
+- [] Join
+- [] Login
+- [x] Search
+- [] User Deatail
+- [] Edit Profile
+- [] Change Password
+- [] Upload Video
+- [] Video Detail
+- [] Edit Video
