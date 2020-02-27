@@ -79,6 +79,14 @@
 
 - M, V, C 에 해당하는 파트들을 서로 분리하여 작성하고 관리
 
+### 10) Status code
+
+- 인터넷이 서로 어떻게 상호작용하고 있는가를 표시
+- 200 : ok
+- 204 : no content
+- 403 : forbidden
+- 400 : bad request
+
 ## 2. 클론
 
 ### 1) nodeJS 설치
@@ -212,24 +220,42 @@ app.set("views", [기본 폴더 경로]); # 디폴트 값은 "/views"  => views 
 
 - 사용자 입력 사항에 대한 응답
 
-  - 입력 받기
+  - GET method
 
-    ```html
-    <form action="[경로]" method="[get]">
-      <!-- query에 접근하기 위해서는 get 방식이어야 함-->
-      <input
-        type="[유형]"
-        name="[query로_전해질_때의_이름]"
-      />
-      <!-- url: `baseURL/경로?name=인풋값` -->
-      ``
-    </form>
-    ```
+    - 입력 받기
 
-  - 입력값 사용
+      ```html
+      <form action="[경로]" method="[get]">
+        <!-- query에 접근하기 위해서는 get 방식이어야 함-->
+        <input
+          type="[유형]"
+          name="[query로_전해질_때의_이름]"
+        />
+        <!-- url: `baseURL/경로?name=인풋값` -->
+      </form>
+      ```
 
-    - 입력값은 `res.query` 에 저장됨
-    - 컨트롤러에서 해당 값을 pug 에 전달
+    - 입력값 사용
+
+      - 입력값은 `res.query` 에 저장됨
+      - 컨트롤러에서 해당 값을 pug 에 전달
+
+  - POST method
+
+    - 입력 받기
+
+      ```html
+      <form action="[경로]" method="[post]">
+        <input
+          type="[유형]"
+          name="[res.body 에 전달되는 이름]"
+        />
+      </form>
+      ```
+
+    - 입력값 사용
+      - 입력값은 `res.body` 로 전송됨
+      - **bodyparser** middleware 를 사용해야 `res.body` 로 정보를 전달받을 수 있음
 
 ##### mixin
 
