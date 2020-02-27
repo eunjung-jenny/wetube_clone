@@ -231,6 +231,19 @@ app.set("views", [기본 폴더 경로]); # 디폴트 값은 "/views"  => views 
     - 입력값은 `res.query` 에 저장됨
     - 컨트롤러에서 해당 값을 pug 에 전달
 
+##### mixin
+
+- 브라우저 상에 반복되는 html 코드를 복/붙 하지 않고 재활용 할 수 있도록 구조화
+- 다른 정보를 같은 구조에 넣어서 보여줘야 할 때 사용
+
+```pug
+mixin videoBlock(video = {})
+  .videoBlock
+    h1.videoBlock__title= video.title
+```
+
+- mixin에 인자가 입력되면 그 객체의 이름을 video라고 명명하고, 해당 객체의 title 을 받아 h1 태그에 사용
+
 ### 8) HTML
 
 - label
