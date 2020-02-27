@@ -208,3 +208,21 @@ app.set("views", [기본 폴더 경로]); # 디폴트 값은 "/views"  => views 
 
   - cotroller 파일에서 `res.render` 의 두번째 인자로 템플릿에서 사용될 정보들을 딕셔너리 형태로 입력
   - 컨트롤러 (`res.render([pug파일], [정보])`)에서 정보가 pug 파일로 전달 => pug 파일은 템플릿에서 extend => 템플릿에 정보가 전달
+
+- 사용자 입력 사항에 대한 응답
+
+  - 입력 받기
+
+    ```html
+    <form action=[경로] method=[get/post]>
+    <input
+      type="[유형]"
+      name="[query로_전해질_때의_이름]"
+    />
+    <!-- url: `baseURL/경로?name=인풋값` -->
+    ``
+    ```
+
+  - 입력값 사용
+
+    - 입력값은 `res.query` 에 저장됨
