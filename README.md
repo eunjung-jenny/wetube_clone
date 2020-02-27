@@ -186,6 +186,7 @@ app.set("views", [기본 폴더 경로]); # 디폴트 값은 "/views"  => views 
 - 각 페이지별 pug 파일에서 `extends [템플릿 파일 경로]`로 템플릿 활용 의사를 밝히고, `block content` 내부에 원하는 내용을 작성
 - html 의 `<p class=">hello</p>` 은 pug 에서 `p hello` 와 동일
 - 태그간 자손 관계는 tab 으로 표현
+- 텍스트를 태그로 인식할 때는 텍스트 앞에 | 를 입력
 
 ##### partials
 
@@ -228,6 +229,12 @@ app.set("views", [기본 폴더 경로]); # 디폴트 값은 "/views"  => views 
   - 입력값 사용
 
     - 입력값은 `res.query` 에 저장됨
+    - 컨트롤러에서 해당 값을 pug 에 전달
+
+### 8) HTML
+
+- label
+  - input 선택영역의 확장
 
 ### Pages I need
 
