@@ -71,7 +71,7 @@
 
 - Model : data
 - View : how do the data look
-- Control : function thatn looks for the data
+- Control : function that looks for the data
 
   - Controller : 일반적으로 하나의 데이터셋마다 하나의 컨트롤러를 설정
     - 현 시점에서는 video, user에 대해 컨트롤러를 하나씩 만들 예정
