@@ -340,6 +340,15 @@ const schema = new mongoose.Schema([딕셔너리 형태의 모델 형식 정의]
 const model = mongoose.model("[모델명]", [schema 변수명])
 ```
 
+- relationship of data
+
+  - ex. 특정 비디오와 그에 대한 댓글
+
+  - wetube clone 에서의 구현 가능성
+    - (\*) 비디오에 댓글 아이디를 리스트로 저장
+    - 댓글에 비디오 아이디를 저장
+    - 객체 아이디의 타입은 `mongoose.Schema.Types.ObjectId`
+
 ### Pages I need
 
 - [] Home

@@ -17,7 +17,10 @@ const VideoSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now // document가 생성될 때 해당 함수 실행
-  }
+  },
+  comments: [
+    { type: mongoose.Schema.Types.ObjectId, ref: "Comment" }
+  ]
 });
 
 const model = mongoose.model("Video", VideoSchema);
