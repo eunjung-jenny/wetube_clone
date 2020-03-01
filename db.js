@@ -1,28 +1,19 @@
-export const videos = [
-  {
-    id: 1,
-    title: "Video 1",
-    description: "This is video 1",
-    views: 10,
-    videoFile:
-      "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-    creator: {
-      id: 11,
-      name: "Jenny",
-      email: "jenny@gmail.com"
-    }
-  },
-  {
-    id: 2,
-    title: "Video 2",
-    description: "This is video 2",
-    views: 12,
-    videoFile:
-      "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-    creator: {
-      id: 13,
-      name: "Jen",
-      email: "jen@gmail.com"
-    }
-  }
-];
+import mongoose from "mongoose";
+
+// 연결
+mongoose.connect("mongodb://localhost:27017/wetube_clone"); // bash 창에서 mongo 로 접속하여 확인할 수 있는 port 번호/[database 이름]
+
+const handleOpen = () => console.log("✅  Connected to DB");
+const handleError = error =>
+  console.log(`❌  Error on DB Connection: ${error}`);
+// mongoose.connect("mongodb://localhost:27010/wetube_clone", {
+//   useNewUrlParser: true,
+//   useFindAndModify: false
+// });
+
+// MongoDB 와의 연결을 상수로 저장, export 하게 될 객체
+const db = mongoose.connection;
+
+// once: 한 번만 실행
+db.once("open", handleOpen);
+db.on("error", handleError);

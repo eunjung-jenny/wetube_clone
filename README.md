@@ -275,12 +275,46 @@ mixin videoBlock(video = {})
 - label
   - input 선택영역의 확장
 
-### 9) DB
+### 10) MongoDB
 
-#### (1) Fake DB (db.js)
+- [NoSQL](https://www.mongodb.com/nosql-explained)
+
+#### (0) Fake DB (db.js)
 
 - each elem in elems (in html)
   - 순회
+
+#### 1) 초기설정
+
+- [Guide](https://docs.mongodb.com/manual/installation/)
+
+- [mongoDB](mongodb.com) - **community server** 다운로드
+
+```bash
+# 설치 # 공식 홈페이지에서 community server 다운로드도 가능
+brew tap mongodb/brew
+brew install mongodb-community@[버전]
+
+# 설정
+brew services start mongod-community@[버전] # to run MongoDB as a macOS service
+ps aus | grep -v grep | grep mongod # to verify that MongoDB is running
+mongo # to begin using MongoDB # exit
+
+# connection between JS and MongoDB
+npm install mongoose
+
+#
+npm install dotenv
+```
+
+```javascript
+import mongoose
+// MongoDB 와 JS 연결
+mongoose.connect("mongodb://localhost:[port]/[database명]") // bash에서 mongo 접속하여 확인
+
+const db = mongoose.connection
+db.once("open", [callback func.])
+```
 
 ### Pages I need
 
