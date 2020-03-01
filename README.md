@@ -296,7 +296,7 @@ mixin videoBlock(video = {})
 - each elem in elems (in html)
   - 순회
 
-#### 1) 초기설정
+#### (1) 초기설정
 
 - [Guide](https://docs.mongodb.com/manual/installation/)
 
@@ -323,6 +323,21 @@ mongoose.connect("mongodb://localhost:[port]/[database명]") // bash에서 mongo
 
 const db = mongoose.connection
 db.once("open", [callback func.])
+```
+
+#### (2) Model ("M"VC)
+
+- MongoDB 는 json 파일로 document (data)를 저장
+
+  - document 의 집합은 collection 이라고 부름
+
+- schema & model
+  - [schema](http://mongoosejs.com/docs/guide.html): 형식
+  - model: schema 를 기반으로 하는 데이터
+
+```javascript
+const schema = new mongoose.Schema([딕셔너리 형태의 모델 형식 정의])
+const model = mongoose.model("[모델명]", [schema 변수명])
 ```
 
 ### Pages I need
