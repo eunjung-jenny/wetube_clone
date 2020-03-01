@@ -99,6 +99,24 @@ dotenv.config(); // .[파일명] 파일에 있는 정보를 process.[파일] 변
 process.env.[변수명]
 ```
 
+### 12) async & await
+
+- await 은 async 가 없이는 작동하지 않음
+- await 직후의 작업이 완료될 때까지 다음 작업을 수행하지 않음
+  - 작업의 성공여부와는 관계없이 작업이 완료될 때까지 기다림
+- 작업을 실패하는 경우를 핸들링하기 위해 `try { ... } catch (error) { ... }` 구문을 사용
+
+````javascript
+export const home = async(req, res) => {
+  try{
+    const videos = await Video.find({});
+    res.render("home", { pageTitle: "Home", videos});
+  } catch (error) {
+    res.render("home", { pageTitle: "Home", videos: []});
+  }
+};
+```
+
 ## 2. 클론
 
 ### 1) nodeJS 설치
@@ -110,7 +128,7 @@ node -v # nodeJS 버전 체크
 brew update node # 업데이트
 
 node [파일명] # node로 실행
-```
+````
 
 - `brew install node` installer 없이 설치
 

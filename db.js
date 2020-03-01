@@ -4,8 +4,8 @@ dotenv.config();
 
 // 연결
 mongoose.connect(process.env.MONGO_URL, {
-  useNewURLParser: true,
-  useFindAndModify: false
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 }); // bash 창에서 mongo 로 접속하여 확인할 수 있는 port 번호/[database 이름]
 
 const handleOpen = () => console.log("✅  Connected to DB");
