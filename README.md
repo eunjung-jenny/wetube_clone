@@ -61,6 +61,8 @@
   - `npm install body-parser` : form을 서버로 전송하는 경우 이를 받을 수 있도록 함 (to be continued..)
     - 옵션에 따라 받아서 parsing 할 수 있는 형식이 달라짐
   - `npm install cookie-parser` : session을 다룰 수 있도록 함 (to be continued..)
+  - `npm install multer`: 파일 업로드시 해당 파일의 정보들을 반환함 ([doc](https://github.com/expressjs/multer/))
+    - 적용할 form 의 속성에 `enctype="multipart/form-data"`를 추가해야 함
 
 ### 8) router & route
 
@@ -366,6 +368,14 @@ const model = mongoose.model("[모델명]", [schema 변수명])
     - (\*) 비디오에 댓글 아이디를 리스트로 저장
     - 댓글에 비디오 아이디를 저장
     - 객체 아이디의 타입은 `mongoose.Schema.Types.ObjectId`
+
+#### (3) Upload 기능
+
+- multer middleware 를 사용하여 **multipart/form-data**(form을 통해 파일을 등록, 전송시 웹브라우저가 보내는 http 메시지의 content-type 속성의 값) 을 핸들링
+- flow
+  - 파일 업도르시 해당 라우트에 post 방식으로 요청 전송
+  - multer 를 통해 1. 서버상 정해진 경로에 파일이 저장되고, 2. form 의 text field 값을 저장하고 있는 body 객체와 파일에 대한 정보를 저자하고 있는 file 객체를 request 객체에 전달
+  - 전달받은 정보를 MongoDB에 입력
 
 ### Pages I need
 
