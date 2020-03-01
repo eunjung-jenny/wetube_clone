@@ -87,6 +87,18 @@
 - 403 : forbidden
 - 400 : bad request
 
+### 11) .env (dotenv)
+
+- 공개해선 안되는 key들을 저장
+  - .gitignore 에 추가
+
+```javascript
+import dotenv from "dotenv";
+dotenv.config(); // .[파일명] 파일에 있는 정보를 process.[파일] 변수에 저장
+
+process.env.[변수명]
+```
+
 ## 2. 클론
 
 ### 1) nodeJS 설치
@@ -302,9 +314,6 @@ mongo # to begin using MongoDB # exit
 
 # connection between JS and MongoDB
 npm install mongoose
-
-#
-npm install dotenv
 ```
 
 ```javascript
