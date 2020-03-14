@@ -371,11 +371,37 @@ const model = mongoose.model("[모델명]", [schema 변수명])
 
 #### (3) Upload 기능
 
-- multer middleware 를 사용하여 **multipart/form-data**(form을 통해 파일을 등록, 전송시 웹브라우저가 보내는 http 메시지의 content-type 속성의 값) 을 핸들링
+- `multer` middleware 를 사용하여 **multipart/form-data**(form을 통해 파일을 등록, 전송시 웹브라우저가 보내는 http 메시지의 content-type 속성의 값) 을 핸들링
 - flow
-  - 파일 업도르시 해당 라우트에 post 방식으로 요청 전송
+
+  - 파일 업로드시 해당 라우트에 post 방식으로 요청 전송
   - multer 를 통해 1. 서버상 정해진 경로에 파일이 저장되고, 2. form 의 text field 값을 저장하고 있는 body 객체와 파일에 대한 정보를 저자하고 있는 file 객체를 request 객체에 전달
   - 전달받은 정보를 MongoDB에 입력
+
+- **multer configuration and usage**
+
+```javascript
+import multer from "multer";
+const multerVideo = multer({ dest: "uploads/videos/" }); // 업로드할 파일의 저장 경로 설정
+
+export const uploadVideo = multerVideo.single("videoFile"); // input 태그의 name 속성 값과 매치
+
+// app 자체에서 업로드한 파일을 보여줄 수 있도록 multer 에서 지정한 경로에 접근 가능하도록 해줘야 함
+app.use("/uploads", express.static("uploads")); // express.static : built-in 미들웨어로, 해당 디렉토리로 접근하여 파일을 살펴보도록 함
+```
+
+- **good practice 가 아님!!** : 서버와 동일한 경로에 자료를 보관하지 말 것!
+
+#### (4) MongoDB 에 직접 접속해서 정보를 변경하기
+
+```bash
+mongo
+# help : 도움말
+show [db명]
+use wetube_clone
+show collections
+db.[collection명].remove({}) # 삭제
+```
 
 ### Pages I need
 
