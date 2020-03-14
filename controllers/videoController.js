@@ -45,9 +45,43 @@ export const postUpload = async (req, res) => {
   // res.render("upload", { pageTitle: "Upload" });
 };
 
-export const videoDetail = (req, res) =>
-  res.render("videoDetail", { pageTitle: "Video Detail" });
-export const editVideo = (req, res) =>
+export const videoDetail = async (req, res) => {
+  // routes 에서 /:id 로 변수라는 표시를 해놨기 때문에 req.params 에 id 로 전달이 됨
+  const {
+    params: { id }
+  } = req;
+  try {
+    const video = await Video.findById(id);
+    console.log(video);
+    res.render("videoDetail", {
+      pageTitle: "Video Detail",
+      video
+    });
+  } catch (e) {
+    console.log(e);
+    res.redirect(routes.home);
+  }
+};
+
+export const getEditVideo = async (req, res) => {
+  const {
+    params: { id }
+  } = req;
+  try {
+    const video = await Video.findById(id);
+    res.render("editVideo", {
+      pageTitle: `Edit ${video.title}`,
+      video
+    });
+  } catch (e) {
+    console.log(e);
+    res.redirect(routes.home);
+  }
+
   res.render("editVideo", { pageTitle: "Edit Video" });
+};
+
+export const postEditVideo = (req, res) => {};
+
 export const deleteVideo = (req, res) =>
   res.render("deleteVideo", { pageTitle: "Delete Video" });
