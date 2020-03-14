@@ -108,16 +108,21 @@ process.env.[변수명]
   - 작업의 성공여부와는 관계없이 작업이 완료될 때까지 기다림
 - 작업을 실패하는 경우를 핸들링하기 위해 `try { ... } catch (error) { ... }` 구문을 사용
 
-````javascript
-export const home = async(req, res) => {
-  try{
+```javascript
+export const home = async (req, res) => {
+  try {
     const videos = await Video.find({});
-    res.render("home", { pageTitle: "Home", videos});
+    res.render("home", { pageTitle: "Home", videos });
   } catch (error) {
-    res.render("home", { pageTitle: "Home", videos: []});
+    res.render("home", { pageTitle: "Home", videos: [] });
   }
 };
 ```
+
+### 13) Regex 정규표현식
+
+- [참고](https://regex101.com)
+- 문자열에서 특정 패턴을 탐색
 
 ## 2. 클론
 
@@ -130,7 +135,7 @@ node -v # nodeJS 버전 체크
 brew update node # 업데이트
 
 node [파일명] # node로 실행
-````
+```
 
 - `brew install node` installer 없이 설치
 
@@ -307,7 +312,7 @@ mixin videoBlock(video = {})
 - label
   - input 선택영역의 확장
 
-### 10) MongoDB
+### 9) MongoDB
 
 - [NoSQL](https://www.mongodb.com/nosql-explained)
 
@@ -403,6 +408,20 @@ show collections
 db.[collection명].remove({}) # 삭제
 ```
 
+### 10) Linter
+
+- 코드에 훈수두는 친구
+
+```bash
+npm install eslint -D
+npm install eslint-config-prettier -D
+eslint --init
+```
+
+module.exports = {
+extends: ["airbnb-base", "plugin:prettier/recommended]
+};
+
 ### Pages I need
 
 - [] Home
@@ -412,6 +431,6 @@ db.[collection명].remove({}) # 삭제
 - [] User Deatail
 - [] Edit Profile
 - [] Change Password
-- [] Upload Video
-- [] Video Detail
-- [] Edit Video
+- [x] Upload Video
+- [x] Video Detail
+- [x] Edit Video

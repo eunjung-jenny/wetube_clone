@@ -23,6 +23,9 @@
     "start": "nodemon --exec babel-node init.js --delay 2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1"
   }
 }
