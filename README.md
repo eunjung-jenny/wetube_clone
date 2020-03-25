@@ -453,6 +453,12 @@ module.exports = {
 extends: ["airbnb-base", "plugin:prettier/recommended]
 };
 
+### 10) scss
+
+- sass 파일에서는 `$` 기호를 변수명 앞에 붙여줌으로써 css 속성의 값을 변수로 선언할 수 있음
+- css 파일에서 sass 파일에서 선언한 변수를 사용할 때 또한 `$`를 붙인 변수를 입력해야 함
+- 부모-자식 관계에 있는 요소들의 스타일을 적용할 때, `html` 과 유사하게 트리 구조로 작성이 가능함
+
 ### Pages I need
 
 - [] Home

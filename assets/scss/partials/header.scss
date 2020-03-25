@@ -1,0 +1,48 @@
+.header {
+  background-color: $red;
+  margin-bottom: 50px;
+  .header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5px 20px;
+    .header__column {
+      i {
+        color: white;
+        font-size: 40px;
+      }
+      &:nth-child(2) {
+        width: 35%;
+        form {
+          width: 100%;
+          input {
+            padding: 7px 10px;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 14px;
+            color: $black;
+            font-weight: 600;
+            &::placeholder {
+              font-weight: 300;
+              color: rgba(0, 0, 0, 0.7);
+            }
+          }
+        }
+      }
+      &:last-child {
+        ul {
+          display: flex;
+          font-weight: 600;
+          color: white;
+          text-transform: uppercase;
+          li:not(:last-child) {
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+  }
+}

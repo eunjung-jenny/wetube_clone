@@ -1,3 +1,5 @@
-@import "config/_variables.scss"; // _ 언더바 : sass 파일 표시
+@import "config/_variables.scss";
 @import "config/reset.scss";
 @import "main.scss";
+
+@import "partials/header.scss";
