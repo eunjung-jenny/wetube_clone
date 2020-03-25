@@ -1,5 +1,7 @@
 .header {
   background-color: $red;
+  position: sticky;
+  top: 0;
   margin-bottom: 50px;
   .header__wrapper {
     display: flex;
