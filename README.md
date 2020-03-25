@@ -124,6 +124,37 @@ export const home = async (req, res) => {
 - [참고](https://regex101.com)
 - 문자열에서 특정 패턴을 탐색
 
+### 14) Webpack 웹팩 (Front)
+
+- module bundler
+- 프로젝트에서 생성하는 여러 파일들을 호환성이 보장되는 static file (js, css, jpg, png 등) 로 변환
+
+- `npm install webpack webpack-cli` : webpack-cli 는 터미널에서 webpack 을 사용할 수 있게 해줌
+
+- `package.json` 스크립트 명령어 변경
+
+  - `"dev:server": "nodemon --exec babel-node init.js --delay 2"`
+  - `"build:assets": "WEBPACK_ENV=production webpack"`
+  - `"dev:assets": "WEBPACK_ENV=development webpack -w"`
+    - webpack : default로 `webpack.config.js` 탐색하므로 해당 파일 생성 (**babel 사용 불가**)
+    - WEBPACK_ENV=development/production : `.env` 파일에 추가하지 않고도 `process.env.WEBPACK_ENV` 로 호출 가능
+      - production 모드: 코드가 압축됨
+      - development 모드: 에러가 어디에서 발생했는지 알 수 있도록 하기 위해 코드가 압축되지 않음
+    - `-w` : 파일들을 지켜보면서 변경될 때마다 webpack 을 실행하여 새로고침 하지 않아도 적용되도록 함
+    - `npm run dev:server`, `npm run build:assets`,`npm run dev:assets` 로 실행
+
+- Usage
+  - server 와 코드를 연관시키지 말 것!
+  - `entry` 와 `output`으로 구성
+    - entry: 입력할 파일
+    - output: 변환한 파일들을 어디에 둘 것인가?
+  - 자세한 사용법은 `webpack.config.js` 파일 주석 참고
+
+### 15) import path
+
+- Node.js 의 기본 패키지로 해당 파일의 전체 경로를 반환해 줌
+- `path.resolve([...paths])`
+
 ## 2. 클론
 
 ### 1) nodeJS 설치
