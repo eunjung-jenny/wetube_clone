@@ -155,6 +155,48 @@ export const home = async (req, res) => {
 - Node.js 의 기본 패키지로 해당 파일의 전체 경로를 반환해 줌
 - `path.resolve([...paths])`
 
+### 16) authentication
+
+- [참고](https://interconnection.tistory.com/74)
+
+#### (1) HTTP (HyperText Transfer Protocol) 의 특징
+
+- **Connectionless** : 클라이언트가 서버에 요청을 보내고, 서버가 클라이언트에 그에 대한 응답을 보낸 뒤에는 접속이 끊어짐
+- **Stateless** : 접속이 끊어진 후 그와 관련된 상태 및 정보를 유지하지 않음
+
+#### (2) 쿠키 & 세션
+
+##### 쿠키
+
+- 클라이언트가 서버에 요청을 보내면 서버에서 **자동으로** 응답과 함께 쿠키를 (HTTP header 에 포함) 클라이언트에 전송함
+- 클라이언트로 전송된 쿠키는 유효시간동안 로컬에 저장되어 있다가 동일한 요청을 할 때에 HTTP header 에 포함되어 서버로 전송됨
+- 서버에서는 쿠키를 읽어 클라이언트를 구별하고, 필요에 따라 쿠키를 업데이트하여 다시 응답과 함께 클라이언트에 전송함
+
+##### 세션
+
+- 클라이언트가 서버에 접속을 하면 고유한 세션ID 를 발급받게 되고 이 세션ID는 쿠키에 저장됨
+- 클라이언트가 서버에 다른 요청을 할 때, 쿠키를 통해 세션ID 가 서버에 전달되고, 서버는 세션ID를 통해 클라이언트의 정보를 인식함
+- 클라이언트에는 세션ID 만 전달이 되고 클라이언트에 대한 중요한 정보들은 서버에 저장을 하게 됨
+
+  - 보안 측면에서 쿠키보다 우수하지만,
+  - 서버 메모리를 사용하게 되므로 과부하로 인한 성능 저하의 요인이 될 수 있음
+
+- serialization: 쿠키에 정보를 담는 작업 (주로, id)
+- deserialization: 쿠키에 담겨있는 정보를 활용해 클라이언트의 정보로 전환하는 작업
+
+- `npm install express-session`
+
+#### (3) Passport JS
+
+- 사용자 인증과 관련된 전반적인 기능을 구현해주는 미들웨어로, 쿠키 생성, 저장부터 쿠키를 받아 사용자 인증을 수행하고, 인증된 user object (`req.user`)를 controller 에 넘겨주는 등의 작업을 수행
+- JS, MongoDB 를 사용하는 경우, `passport-local-mongoose` 모듈과 함께 사용하면 찰떡궁합
+- **`req.user`** : passport를 사용하면 사용자가 로그인시 request에 해당 user 객체 정보를 추가해줌
+
+```bash
+npm install passport passport-local # passport-local: 서버 자체 db를 활용한 로그인 방식
+npm install passport-local-mongoose
+```
+
 ## 2. 클론
 
 ### 1) nodeJS 설치
