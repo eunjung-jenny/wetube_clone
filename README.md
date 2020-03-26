@@ -499,6 +499,15 @@ show collections
 db.[collection명].remove({}) # 삭제
 ```
 
+#### (5) populate
+
+```javascript
+Video.findById(id)).populate('creator');
+```
+
+- 위와 같이 작성함으로써 Id 로 탐색한 오브젝트의 creator 필드에 대한 정보를 탐색할 수 있음
+- `populate()` 는 `ObjectId` 타입에만 사용 가능
+
 ### 10) Linter
 
 - 코드에 훈수두는 친구
