@@ -13,6 +13,7 @@ import routes from "./routes";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
+import apiRouter from "./routers/apiRouter";
 
 import "./passport";
 
@@ -47,6 +48,8 @@ app.use(localsMiddleware); // local 변수를 global 변수로 사용 가능하�
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
+
+app.use(routes.api, apiRouter);
 
 // app 객체를 내보내기
 export default app;

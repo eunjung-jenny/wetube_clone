@@ -215,6 +215,11 @@ npm install passport-local-mongoose
   - githubLoginCallback 에서 에러를 반환하지 않을 경우(`cb(null, user`)) **쿠키를 생성, 저장하며** globalRouter.get(callbackURL, ..., postGithubLogIn); 의 postGithubLogIn 수행 (userController.js)
   - home 화면으로 redirection
 
+### 17) Ajax
+
+- 브라우저 새로고침 없이 서버를 통해 필요한 부분만 작업하는 방식
+  - template 을 렌더링하는 과정 없이 특정 url 로 요청을 보내고 그에 대한 controller 가 작업을 수행함
+
 ## 2. 클론
 
 ### 1) nodeJS 설치
