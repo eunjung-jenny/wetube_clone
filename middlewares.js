@@ -4,6 +4,7 @@ import multer from "multer";
 const multerVideo = multer({ dest: "uploads/video/" });
 // 업로드한 파일을 서버에 있는 videos 폴더에 저장
 // "/videos/" 와 같이 작성시 (맨 앞 슬래시) 루트 폴더부터 시작되는 경로에 저장하게 됨
+const multerAvatar = multer({ dest: "uploads/avatars/" });
 
 export const localsMiddleware = (req, res, next) => {
   res.locals.siteName = "WeTube";
@@ -29,3 +30,4 @@ export const onlyPrivate = (req, res, next) => {
 };
 
 export const uploadVideo = multerVideo.single("videoFile"); // form 의 name 속성과 매치
+export const uploadAvatar = multerAvatar.single("avatar");

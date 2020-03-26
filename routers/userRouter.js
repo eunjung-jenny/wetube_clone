@@ -2,10 +2,11 @@ import express from "express";
 import routes from "../routes";
 import {
   userDetail,
-  editProfile,
+  getEditProfile,
+  postEditProfile,
   changePassword
 } from "../controllers/userController";
-import { onlyPrivate } from "../middlewares";
+import { onlyPrivate, uploadAvatar } from "../middlewares";
 
 // 해당 변수만 내보내기
 const userRouter = express.Router();
@@ -14,8 +15,16 @@ const userRouter = express.Router();
 userRouter.get(
   routes.editProfile,
   onlyPrivate,
-  editProfile
+  getEditProfile
 );
+
+userRouter.post(
+  routes.editProfile,
+  onlyPrivate,
+  uploadAvatar,
+  postEditProfile
+);
+
 userRouter.get(
   routes.changePassword,
   onlyPrivate,
