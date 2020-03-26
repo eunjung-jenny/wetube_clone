@@ -44,7 +44,9 @@ export const githubLoginCallback = async (
   profile,
   cb
 ) => {
-  const { id, avatar_url, name, email } = profile;
+  const {
+    _json: { id, avatar_url, name, email }
+  } = profile;
   try {
     const user = await User.findOne({ email });
     if (user) {
@@ -53,8 +55,8 @@ export const githubLoginCallback = async (
       return cb(null, user); // cb(err, user) 에서 err 를 보내지 않으면 성공적으로 수행되었다는 의미
     }
     const newUser = await User.create({
-      email,
-      name,
+      email: email,
+      name: name,
       githubId: id,
       avatarUrl: avatar_url
     });
@@ -71,6 +73,13 @@ export const postGithubLogIn = (req, res) => {
 export const logout = (req, res) => {
   req.logout();
   res.redirect(routes.home);
+};
+
+export const getMe = (req, res) => {
+  res.render("userDetail", {
+    pageTitle: "User Detail",
+    user: req.user
+  });
 };
 
 export const userDetail = (req, res) =>
