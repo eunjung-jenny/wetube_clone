@@ -522,11 +522,19 @@ module.exports = {
 extends: ["airbnb-base", "plugin:prettier/recommended]
 };
 
-### 10) scss
+### 11) scss
 
 - sass 파일에서는 `$` 기호를 변수명 앞에 붙여줌으로써 css 속성의 값을 변수로 선언할 수 있음
 - css 파일에서 sass 파일에서 선언한 변수를 사용할 때 또한 `$`를 붙인 변수를 입력해야 함
 - 부모-자식 관계에 있는 요소들의 스타일을 적용할 때, `html` 과 유사하게 트리 구조로 작성이 가능함
+
+### 12) MediaDevices interface
+
+- 장치에의 접근 권한 요청
+  - 승인하는 순간부터 stream 객체를 얻게 됨
+- `MediaRecorder(stream)` 을 통해 녹음/녹화 가능
+  - 녹음/녹화가 종료되는 시점에 저장된 데이터(`blob`: 0과 1로 이루어진 데이터)에 접근 가능해짐 (`dataavailable` 이벤트 발생)
+-
 
 ### Pages I need
 
