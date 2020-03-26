@@ -36,8 +36,40 @@ export const postLogin = passport.authenticate("local", {
   successRedirect: routes.home
 }); // passport.authenticate() 은 usernameField 와 password 를 찾아보게끔 설정되어 있음
 
+export const githubLogin = passport.authenticate("github");
+
+export const githubLoginCallback = async (
+  _,
+  __,
+  profile,
+  cb
+) => {
+  const { id, avatar_url, name, email } = profile;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      user.githubId = id;
+      user.save();
+      return cb(null, user); // cb(err, user) 에서 err 를 보내지 않으면 성공적으로 수행되었다는 의미
+    }
+    const newUser = await User.create({
+      email,
+      name,
+      githubId: id,
+      avatarUrl: avatar_url
+    });
+    return cb(null, newUser);
+  } catch (error) {
+    return cb(error);
+  }
+};
+
+export const postGithubLogIn = (req, res) => {
+  res.redirect(routes.home);
+};
+
 export const logout = (req, res) => {
-  // To Do: Process Log Out
+  req.logout();
   res.redirect(routes.home);
 };
 

@@ -197,6 +197,24 @@ npm install passport passport-local # passport-local: 서버 자체 db를 활용
 npm install passport-local-mongoose
 ```
 
+#### (4) Github 인증
+
+- `npm install passport-github`
+- github.com/settings/applications/new 에 앱 등록
+- 깃헙 로그인 > 깃헙으로 redirection > 깃헙에서 사용자 권한 요청 > 권한 승인시 정보 전송
+- 실제 과정
+  - a 태그 href(route) (socialLogin.pug)
+  - app.use(..., globalRouter) (app.js)
+  - globalRouter.get(route, githubLogin) (globalRouter.js)
+  - githubLogin = passport.authenticate("github"); (userController.js)
+  - passport.use(new GithubStrategy(...) (passport.js)
+  - 깃헙 페이지에서 권한 부여 > callbackURL
+  - globalRouter.get(callbackURL, passport.authenticate("github", ...) postGithubLogIn) (globalRouter.js)
+  - passport.authenticate 수행하면서 githubLoginCallback 수행 (passport.js)
+  - githubLoginCallback (userController.js)
+  - githubLoginCallback 에서 에러를 반환하지 않을 경우(`cb(null, user`)) **쿠키를 생성, 저장하며** globalRouter.get(callbackURL, ..., postGithubLogIn); 의 postGithubLogIn 수행 (userController.js)
+  - home 화면으로 redirection
+
 ## 2. 클론
 
 ### 1) nodeJS 설치
