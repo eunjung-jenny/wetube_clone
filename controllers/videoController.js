@@ -63,9 +63,9 @@ export const videoDetail = async (req, res) => {
     params: { id }
   } = req;
   try {
-    const video = await Video.findById(id).populate(
-      "creator"
-    );
+    const video = await Video.findById(id)
+      .populate("creator")
+      .populate("comments");
     res.render("videoDetail", {
       pageTitle: video.title,
       video
@@ -143,6 +143,30 @@ export const postRegisterView = async (req, res) => {
     res.status(200);
   } catch (error) {
     res.status(400);
+    res.end();
+  }
+};
+
+// Add Comment
+
+export const postAddComment = async (req, res) => {
+  const {
+    params: { id },
+    body: { comment },
+    user
+  } = req;
+  console.log(id, comment, user);
+  try {
+    const video = await Video.findById(id);
+    const newComment = await Comment.create({
+      text: comment,
+      creator: user.id
+    });
+    video.comments.push(newComment.id);
+    video.save();
+  } catch (error) {
+    res.status(404);
+  } finally {
     res.end();
   }
 };
